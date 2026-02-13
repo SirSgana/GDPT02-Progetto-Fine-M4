@@ -3,31 +3,31 @@ using UnityEngine.UI;
 
 public class LifeController : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int maxHp = 100;
-    [SerializeField] private int minHp = 0;
-    [SerializeField] private Slider healthSlider;
+    [SerializeField] private int _maxHp = 100;
+    [SerializeField] private int _minHp = 0;
+    [SerializeField] private Slider _healthSlider;
 
-    private int currentHp;
+    private int _currentHp;
 
     private void Awake()
     {
-        currentHp = maxHp;
-        healthSlider.maxValue = maxHp;
-        healthSlider.value = currentHp;
+        _currentHp = _maxHp;
+        _healthSlider.maxValue = _maxHp;
+        _healthSlider.value = _currentHp;
     }
-    public int GetHp() => currentHp;
+    public int GetHp() => _currentHp;
 
     private void SetHp(int hp)
     {
-        currentHp = Mathf.Clamp(hp, minHp, maxHp);
-        healthSlider.value = currentHp;
+        _currentHp = Mathf.Clamp(hp, _minHp, _maxHp);
+        _healthSlider.value = _currentHp;
     }
 
     public void Damage(int damage)
     {
-        SetHp(currentHp - damage);
+        SetHp(_currentHp - damage);
         //CheckHp();
-        Debug.Log("Il player ha ancora: " + currentHp + " Vita rimasta");
+        Debug.Log("Il player ha ancora: " + _currentHp + " Vita rimasta");
     }
 
 

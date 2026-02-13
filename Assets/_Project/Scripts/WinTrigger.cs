@@ -3,10 +3,10 @@ using TMPro;
 public class WinTrigger : MonoBehaviour
 {
 
-    [SerializeField] private int coinsRequired = 25;
-    [SerializeField] private GameObject winPanel;
-    [SerializeField] private GameObject infoPanel;
-    [SerializeField] private TextMeshProUGUI infoText;
+    [SerializeField] private int _coinsRequired = 25;
+    [SerializeField] private GameObject _winPanel;
+    [SerializeField] private GameObject _infoPanel;
+    [SerializeField] private TextMeshProUGUI _infoText;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,10 +14,10 @@ public class WinTrigger : MonoBehaviour
         {
             int currentCoins = CoinManager.Instance.GetTotalCoins();
 
-            if (currentCoins >= coinsRequired)
+            if (currentCoins >= _coinsRequired)
             {
-                winPanel.SetActive(true);
-                infoPanel.SetActive(false);
+                _winPanel.SetActive(true);
+                _infoPanel.SetActive(false);
                 Time.timeScale = 0f;
 
                 //Sblocca il cursore ed il mouse
@@ -26,15 +26,15 @@ public class WinTrigger : MonoBehaviour
             }
             else
             {
-                int missingCoins = coinsRequired - currentCoins;
-                infoText.text = $"Hai raccolto {currentCoins} su {coinsRequired}";
-                infoPanel.SetActive(true);
+                int missingCoins = _coinsRequired - currentCoins;
+                _infoText.text = $"Hai raccolto {currentCoins} su {_coinsRequired}";
+                _infoPanel.SetActive(true);
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        infoPanel.SetActive(false);
+        _infoPanel.SetActive(false);
     }
 }

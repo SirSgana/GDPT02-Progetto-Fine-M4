@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class CameraOrbit : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] Vector3 offset = new Vector3(0f, 6f, -6f);
-    [SerializeField] float mouseSensitivity = 3f;
-    [SerializeField] float bottomClamp = -30f;
-    [SerializeField] float topClamp;
+    [SerializeField] private Transform _target;
+    [SerializeField] private Vector3 _offset = new Vector3(0f, 6f, -6f);
+    [SerializeField] private float _mouseSensitivity = 3f;
+    [SerializeField] private float _bottomClamp = -30f;
+    [SerializeField] private float _topClamp;
 
-    private float yaw;
-    private float pitch;
+    private float _yaw;
+    private float _pitch;
 
     private void Start()
     {
@@ -19,20 +19,20 @@ public class CameraOrbit : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (target == null) return;
+        if (_target == null) return;
 
         //Input del mouse
-        yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        pitch = Mathf.Clamp(pitch, bottomClamp, topClamp);
+        _yaw += Input.GetAxis("Mouse X") * _mouseSensitivity;
+        _pitch -= Input.GetAxis("Mouse Y") * _mouseSensitivity;
+        _pitch = Mathf.Clamp(_pitch, _bottomClamp, _topClamp);
 
         //Rotazione su pitch e yaw
-        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
+        Quaternion rotation = Quaternion.Euler(_pitch, _yaw, 0);
         
         //Calcolo posizione e rotazione
-        Vector3 desiredPosition = target.position + rotation * offset;
+        Vector3 desiredPosition = _target.position + rotation * _offset;
 
-        Vector3 lookAt = target.position + Vector3.up * 2;
+        Vector3 lookAt = _target.position + Vector3.up * 2;
         Quaternion lookRotation = Quaternion.LookRotation(lookAt - desiredPosition);
         transform.SetPositionAndRotation(desiredPosition, lookRotation);
     }

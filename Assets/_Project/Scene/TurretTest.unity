@@ -409,11 +409,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92f27a353ddbfc41a08358c32cca693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2077498631}
-  offset: {x: 0, y: 4, z: -6}
-  mouseSensitivity: 3
-  bottomClamp: -30
-  topClamp: 0
+  _target: {fileID: 0}
+  _offset: {x: 0, y: 6, z: -6}
+  _mouseSensitivity: 3
+  _bottomClamp: -30
+  _topClamp: 0
 --- !u!1 &1233074804
 GameObject:
   m_ObjectHideFlags: 0

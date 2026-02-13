@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GroundDamage : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
-    [SerializeField] private float timeSubtract = -10f;
+    [SerializeField] private int _damage = 10;
+    [SerializeField] private float _timeSubtract = -10f;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,10 +17,10 @@ public class GroundDamage : MonoBehaviour
             IDamageable damageable = collision.collider.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.Damage(damage);
+                damageable.Damage(_damage);
             }
             //Toglie tempo se tocchi il ground
-            if (timer != null) { timer.AddTime(timeSubtract); }
+            if (timer != null) { timer.AddTime(_timeSubtract); }
 
             //Respawn all'ultimo checkpoint
             PlayerRespawn respawn = collision.gameObject.GetComponent<PlayerRespawn>();

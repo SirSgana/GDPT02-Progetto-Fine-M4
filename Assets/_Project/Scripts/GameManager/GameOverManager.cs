@@ -5,16 +5,16 @@ using UnityEngine;
 public class GameOverManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private LifeController playerLife;
-    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private LifeController _playerLife;
+    [SerializeField] private GameObject _gameOverPanel;
 
-    private bool isGameOver = false;
+    private bool _isGameOver = false;
 
     private void Update()
     {
-        if (isGameOver) return;
+        if (_isGameOver) return;
 
-        if (playerLife != null && playerLife.GetHp() <= 0)
+        if (_playerLife != null && _playerLife.GetHp() <= 0)
         {
             TriggerGameOver();
         }
@@ -23,8 +23,8 @@ public class GameOverManager : MonoBehaviour
     //Public perchè presa anche dal TimeManager
     public void TriggerGameOver()
     {
-        isGameOver = true;
-        gameOverPanel.SetActive(true);
+        _isGameOver = true;
+        _gameOverPanel.SetActive(true);
 
         //Ferma il gioco ed attiva il mouse 
         Time.timeScale = 0f;

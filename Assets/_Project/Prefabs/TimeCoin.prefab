@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf709091993b6a4408943234d286ed90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAngle: 180
-  yAngle: 0
-  zAngle: 0
-  timeBonus: 10
+  _xAngle: 90
+  _yAngle: 0
+  _zAngle: 0
+  _timeBonus: 10

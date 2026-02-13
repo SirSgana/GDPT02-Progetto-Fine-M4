@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletRingDamage : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
+    [SerializeField] private int _damage = 10;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -12,7 +12,7 @@ public class BulletRingDamage : MonoBehaviour
             IDamageable damageable = collision.collider.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.Damage(damage);
+                damageable.Damage(_damage);
             }
             Destroy(gameObject);
         }

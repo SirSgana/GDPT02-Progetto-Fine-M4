@@ -3,9 +3,9 @@ using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
     
-    private int totalCoins = 0;
+    private int _totalCoins = 0;
 
     public static CoinManager Instance;
 
@@ -16,13 +16,13 @@ public class CoinManager : MonoBehaviour
 
     public void AddScore(int value)
     {
-        totalCoins += value;
-        scoreText.text = totalCoins.ToString();
+        _totalCoins += value;
+        _scoreText.text = _totalCoins.ToString();
     }
 
     //Variabile per consentire allo script WinTrigger di leggere le monete totali
     public int GetTotalCoins() 
     { 
-        return totalCoins; 
+        return _totalCoins; 
     } 
 }

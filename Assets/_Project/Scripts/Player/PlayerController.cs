@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GroundCheck groundCheck;
+    [SerializeField] private GroundCheck _groundCheck;
     private Rigidbody _rb;
     private Camera _mainCamera;
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         //Questo calcolo mi serve per cambiare le direzioni in base a dove sto guardando
         _dir = (camForward * v + camRight * h).normalized; 
         
-      if (Input.GetKeyDown(KeyCode.Space) && groundCheck.IsGrounded()) 
+      if (Input.GetKeyDown(KeyCode.Space) && _groundCheck.IsGrounded()) 
         {
             Jump(); 
         } 

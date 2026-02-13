@@ -2,31 +2,31 @@ using UnityEngine;
 using TMPro;
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] private float timeRemaining = 300f; //5min in secondi
-    [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private GameOverManager gameOverManager; //attaccando il GameManager trova subito lo script GameOverManager
+    [SerializeField] private float _timeRemaining = 300f; //5min in secondi
+    [SerializeField] private TextMeshProUGUI _timerText;
+    [SerializeField] private GameOverManager _gameOverManager; //attaccando il GameManager trova subito lo script GameOverManager
 
-    private bool isTimerRunning = false;
+    private bool _isTimerRunning = false;
 
     private void Start()
     {
-        isTimerRunning = true;
+        _isTimerRunning = true;
     }
 
     private void Update()
     {
-        if (isTimerRunning)
+        if (_isTimerRunning)
         {
-            if (timeRemaining > 0)
+            if (_timeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                _timeRemaining -= Time.deltaTime;
+                DisplayTime(_timeRemaining);
             }
             else
             {
                 Debug.Log("Tempo Scaduto");
-                timeRemaining = 0;
-                isTimerRunning = false;
+                _timeRemaining = 0;
+                _isTimerRunning = false;
                 OnTimeOut();
             }
         }
@@ -39,21 +39,21 @@ public class TimeManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         //Formatta la stringa come 00:00
-        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        _timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
     //Prende la funzione del GameOverManager
     private void OnTimeOut()
     { 
-        if (gameOverManager != null)
+        if (_gameOverManager != null)
         {
-            gameOverManager.TriggerGameOver();
+            _gameOverManager.TriggerGameOver();
         }
     }
 
     //Funzione richiamata in GroundDamage e TimeCoin per aggiungere/togliere tempo
     public void AddTime(float amount)
     {
-        timeRemaining += amount;
+        _timeRemaining += amount;
     }
 }

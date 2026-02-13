@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class PingPong : MonoBehaviour
 {
-    [SerializeField] Vector3 movementVector;
-    [SerializeField] float speed = 1f;
+    [SerializeField] private Vector3 _movementVector;
+    [SerializeField] private float _speed = 1f;
 
-    Vector3 startPosition;
-    Vector3 endPosition;
-    float movementFactor = 1f;
+    private Vector3 _startPosition;
+    private Vector3 _endPosition;
+    private float _movementFactor = 1f;
 
     private void Start()
     {
-        startPosition = transform.position;
-        endPosition = startPosition + movementVector;
+        _startPosition = transform.position;
+        _endPosition = _startPosition + _movementVector;
     }
 
     private void Update()
     {
-        movementFactor = Mathf.PingPong(Time.time * speed, 1f);
-        transform.position = Vector3.Lerp(startPosition, endPosition, movementFactor);
+        _movementFactor = Mathf.PingPong(Time.time * _speed, 1f);
+        transform.position = Vector3.Lerp(_startPosition, _endPosition, _movementFactor);
     }
 }

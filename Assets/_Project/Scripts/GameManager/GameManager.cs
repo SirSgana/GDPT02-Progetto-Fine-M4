@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager: MonoBehaviour
 {
-    [SerializeField] private GameObject OptionPanel;
+    [SerializeField] private GameObject _OptionPanel;
 
     public void OnPlay()
     {
@@ -12,7 +12,7 @@ public class GameManager: MonoBehaviour
 
     public void ShowOption()
     {
-        OptionPanel.SetActive(!OptionPanel.activeSelf);
+        _OptionPanel.SetActive(!_OptionPanel.activeSelf);
     }
 
     public void OnExit()

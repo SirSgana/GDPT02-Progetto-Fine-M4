@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    private Vector3 lastCheckpointPosition;
+    private Vector3 _lastCheckpointPosition;
 
     private void Start()
     {
-        lastCheckpointPosition = transform.position;
+        _lastCheckpointPosition = transform.position;
     }
 
     public void SetCheckpoint(Vector3 newPosition)
     {
-        lastCheckpointPosition = newPosition;
+        _lastCheckpointPosition = newPosition;
         Debug.Log("Checkpoint salvato!");
     }
 
     public void Respawn()
     {
-        transform.position = lastCheckpointPosition;
+        transform.position = _lastCheckpointPosition;
     }
 }
